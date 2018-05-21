@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 var inquirer = require('inquirer');
@@ -9,9 +8,9 @@ var keys = require('./keys.js');
 var Twitter = require('twitter');
 // variable holding keys to spotify
 
-var spotify = new Spotify(keys.spotify);
-//var Spotify = require('node-spotify-api');
 
+var Spotify = require('node-spotify-api');
+var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 
 
