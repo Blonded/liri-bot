@@ -64,10 +64,15 @@ function playSongs(){
 // artist name, track name, previewlink,
   spotify.search({ type: 'track', query: 'All the Small Things' }).then(function(response) {
       // artist name
-      // console.log(response.tracks.items[0].artists[0].name);
+      // console.log("The artist name is: " + response.tracks.items[0].artists[0].name);
+
       // album name
-      console.log(response)
+      // console.log("The album name is: " + response.tracks.items[0].album.name)
+
       //track name
+      //console.log("The song name is: " + response.tracks.items[0].name);
+
+      //preview url
       console.log()
 
     }).catch(function(err) {
