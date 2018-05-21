@@ -2,7 +2,7 @@
 
 Liri Bot is a Language Interpretation and Recognition Interface.
 It is a command line node app that takes in parameters and gives you back data through
-Twitter, and Spotify, using request.
+Twitter, OMDB, and Spotify, using request & inquirer.
 
 
 
