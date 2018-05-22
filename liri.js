@@ -39,14 +39,14 @@ inquirer.prompt([
 // switch statement
     switch(answers.theQuestion) {
         case 'Play me a Song':
-            playSongs();
+            // playSongs();
             secondQuestion('spotify')
             break;
         case "Tweet Me":
             tweets();
             break;
         case "What's that movie?":
-            movies();
+            // movies();
             secondQuestion('movie')
             break;
         case "Whatever I want":
@@ -84,13 +84,18 @@ function secondQuestion(command) {
 
 // 2nd FUNCTION - spotify.
 function playSongs(songTitle){
+
+  if(!songTitle){
+    songTitle = "Call me maybe";
+  }
+  // return
 // artist name, track name, previewlink,
   spotify.search({ type: 'track', query: songTitle }).then(function(response) {
       // artist name
       console.log("Artist name: " + response.tracks.items[0].artists[0].name);
 
       // album name
-      console.log("Album name: " + response.tracks.items[0].album.name)
+      console.log("Album name: " + response.tracks.items[0].album.name);
 
       //track name
       console.log("Song name: " + response.tracks.items[0].name);
@@ -101,6 +106,7 @@ function playSongs(songTitle){
     }).catch(function(err) {
       console.log(err);
     });
+    questionPrompt();
 }
 
 //playSongs();
@@ -116,8 +122,8 @@ function tweets(){
   var params = {screen_name: 'KarlTheFog'};
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
-      for(var i = 0; i < tweets.length; i++){
-        console.log(tweets[i].text);
+      for(var i = 0; i < 20; i++){
+        console.log("\n==================================\n",tweets[i].text,"\n========================================");
       }
     } else {
       throw error;
@@ -133,7 +139,13 @@ function tweets(){
 function movies(movieTitle){
 
   // run a request to the OMDB API with the movie specified
+  if (movieTitle === ''){
+    movieTitle = "Mr. Nobody"
+  }
+
   request("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
+
+
 
     // If the request is successful (i.e. if the response status code is 200) [no errors]
     if (!error && response.statusCode === 200) {
@@ -161,14 +173,8 @@ function movies(movieTitle){
 
   // * Actors in the movie.
   console.log("Actors: " + JSON.parse(body).Actors);
-} else if (movies === ''){
-  var boringMovie = "Mr. Nobody"
-  request("http://www.omdbapi.com/?t=" + boringMovie + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
-
-    // If the request is successful (i.e. if the response status code is 200) [no errors]
-    if (!error && response.statusCode === 200)
-    console.log("Movie: " + JSON.parse(body).);)
 }
+
 
   });
 
