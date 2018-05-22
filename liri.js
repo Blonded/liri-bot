@@ -41,7 +41,7 @@ inquirer.prompt([
 
     }
   ]).then(function(answers){
-    console.log('we got our answers!!!!', answers.theQuestion);
+    console.log(answers.theQuestion);
 
     switch(answers.theQuestion) {
         case 'Play me a Song':
@@ -62,7 +62,7 @@ inquirer.prompt([
             console.log("boo")
     }
 
-    //big switch statement
+    // switch statement
   })
 }
 questionPrompt();
@@ -76,8 +76,8 @@ function secondQuestion(command) {
         message: "What do you want?",
       }
     ]).then(function(answers){
-      console.log('this is our command', command);
-      console.log('Second Question answers', answers.secondQuestion);
+      console.log(command);
+      console.log(answers.secondQuestion);
       if (command === "spotify") {
         playSongs(answers.secondQuestion);
       } else  {
@@ -137,14 +137,7 @@ function tweets(){
 
 //4th function - omdb
 function movies(movieTitle){
-  // * Title of the movie.
-  // * Year the movie came out.
-  // * IMDB Rating of the movie.
-  // * Rotten Tomatoes Rating of the movie.
-  // * Country where the movie was produced.
-  // * Language of the movie.
-  // * Plot of the movie.
-  // * Actors in the movie.
+
 
   // Then run a request to the OMDB API with the movie specified
   request("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
@@ -153,15 +146,40 @@ function movies(movieTitle){
     if (!error && response.statusCode === 200) {
 
       // Parse the body of the site and recover just the imdbRating
-      // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
-      console.log("Movie -----" , JSON.parse(body));
+  //  console.log("Movie -----" , JSON.parse(body).Plot);
+
+  // * Title of the movie.
+   console.log("Movie title: " + JSON.parse(body).Title);
+
+  // * Year the movie came out.
+  console.log("The movie was released in: " + JSON.parse(body).Year);
+
+  // * IMDB Rating of the movie.
+  console.log("Movie Rating: " + JSON.parse(body).imdbRating);
+
+  // * Rotten Tomatoes Rating of the movie.
+  console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings);
+
+  // * Country where the movie was produced.
+  console.log("Country produced in: " + JSON.parse(body).Country);
+
+  // * Language of the movie.
+  console.log("This movie is in: " + JSON.parse(body).Language);
+
+  // * Plot of the movie.
+  console.log("Plot: " + JSON.parse(body).Plot);
+
+  // * Actors in the movie.
+  console.log("Actors: " + JSON.parse(body).Actors);
+
+
     }
   });
 
 
 }
 
-//movies()
+//movies();
 
 
 // -----------------------------------------
