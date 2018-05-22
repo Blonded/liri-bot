@@ -28,7 +28,7 @@ LICENSE
 
 Preview of internal bot.
 
-<img src="SRC HERE" alt="screengrab">
+<img src="preview-liribot.gif" alt="node-gif">
 
 
 ### coding style tests
