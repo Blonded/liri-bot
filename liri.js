@@ -21,12 +21,6 @@ var request = require("request");
 var fs = require("fs");
 
 
-//for spotify SEARCH, pulled ex
-// search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, callback);
-// SPOTIFY request, pulled ex
-
-
-
 
 
 // FIRST FUNC - question lists.
@@ -42,17 +36,17 @@ inquirer.prompt([
     }
   ]).then(function(answers){
     console.log(answers.theQuestion);
-
+// switch statement
     switch(answers.theQuestion) {
         case 'Play me a Song':
-            //playSongs('Home');
+            playSongs();
             secondQuestion('spotify')
             break;
         case "Tweet Me":
             tweets();
             break;
         case "What's that movie?":
-            //movies();
+            movies();
             secondQuestion('movie')
             break;
         case "Whatever I want":
@@ -62,7 +56,7 @@ inquirer.prompt([
             console.log("boo")
     }
 
-    // switch statement
+
   })
 }
 questionPrompt();
@@ -135,18 +129,14 @@ function tweets(){
 
 // -----------------------------------------
 
-//4th function - omdb
+//4th function - omdb request
 function movies(movieTitle){
 
-
-  // Then run a request to the OMDB API with the movie specified
+  // run a request to the OMDB API with the movie specified
   request("http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
 
-    // If the request is successful (i.e. if the response status code is 200)
+    // If the request is successful (i.e. if the response status code is 200) [no errors]
     if (!error && response.statusCode === 200) {
-
-      // Parse the body of the site and recover just the imdbRating
-  //  console.log("Movie -----" , JSON.parse(body).Plot);
 
   // * Title of the movie.
    console.log("Movie title: " + JSON.parse(body).Title);
@@ -171,9 +161,15 @@ function movies(movieTitle){
 
   // * Actors in the movie.
   console.log("Actors: " + JSON.parse(body).Actors);
+} else if (movies === ''){
+  var boringMovie = "Mr. Nobody"
+  request("http://www.omdbapi.com/?t=" + boringMovie + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
 
+    // If the request is successful (i.e. if the response status code is 200) [no errors]
+    if (!error && response.statusCode === 200)
+    console.log("Movie: " + JSON.parse(body).);)
+}
 
-    }
   });
 
 
@@ -211,8 +207,3 @@ function doWhatItSays(){
   });
 }
 //doWhatItSays();
-
-
-
-
-// 5 functions: questionprompt, playSongs from spotify, get the tweet, omdb request and random text
