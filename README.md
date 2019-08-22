@@ -27,9 +27,6 @@ LICENSE
 ***
 
 Preview of internal bot.
-
-<img src="liriBotPreview.mp4" alt="node-gif">
-
 ![preview](liribot.gif)
 
 
