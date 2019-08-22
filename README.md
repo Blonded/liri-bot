@@ -30,6 +30,8 @@ Preview of internal bot.
 
 <img src="liriBotPreview.mp4" alt="node-gif">
 
+![preview](liribot.gif)
+
 
 ### coding style tests
 The code listed below is JavaScript listed in node.js
