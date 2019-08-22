@@ -26,11 +26,12 @@ LICENSE
 
 ***
 
-Preview of internal bot.
+### Preview of internal bot.
+
 ![preview](liribot.gif)
 
 
-### coding style tests
+### Coding style tests
 The code listed below is JavaScript listed in node.js
 This function lets you print tweets based off of the chosen 'screen name'.
 
