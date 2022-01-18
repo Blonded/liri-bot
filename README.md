@@ -58,4 +58,4 @@ JavaScript
 Npm Install Packages
 
 ## Authors
-* **Lena Martinson** - *Github* - [Github](https://github.com/Blonded)
+* **Lena Blonded** - *Github* - [Github](https://github.com/Blonded)
